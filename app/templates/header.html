@@ -1,0 +1,21 @@
+<nav>
+      <div >
+        <div >
+          <a  href="#">COMP3161</a>
+        </div>
+        <div>
+          <ul>
+            <li ><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+          </ul>
+
+          <ul>
+            {% if not session.logged_in %}
+              <li><a href="{{ url_for('login') }}">Login</a></li>
+            {% else %}
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+</nav>
