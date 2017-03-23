@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block main %}
+<div style="padding-left:10px">
 <form class="form-login" method="post" >
   <h2>Please sign in</h2>
   {% if error %}
@@ -18,4 +19,5 @@
   </div>
   <button style="width:80px" class="btn btn-default" type="submit">Sign in</button>
 </form>
+</div>
 {% endblock %}

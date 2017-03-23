@@ -18,11 +18,6 @@ from flask import render_template, request, redirect, url_for, flash,session
 def home():
     """Render website's home page."""
     return render_template('home.html')
-
-@app.route('/about/')
-def about():
-    """Render the website's about page."""
-    return render_template('about.html')
     
     
 @app.route("/login", methods=["GET", "POST"])
@@ -57,9 +52,6 @@ def nurse_medication():
 @app.route('/interns/', methods=["GET", "POST"])
 def interns():
     return render_template("InternsTreatedMostPatients.html")
-    
-
-    
     
     
 
