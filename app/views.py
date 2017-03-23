@@ -33,7 +33,35 @@ def login():
 def logout():
     flash('You were logged out')
     return redirect(url_for('login'))
+    
+@app.route('/patient_disease/', methods=["GET", "POST"])
+def patient_disease():
+    return render_template("PatientsWithSelectedDisease.html")
+    
+@app.route('/patient_allergies/', methods=["GET", "POST"])
+def patient_allergies():
+    return render_template("PatientsAllergies.html")
+    
+@app.route('/allergic_medication/', methods=["GET", "POST"])
+def allergic_medication():
+    return render_template("MostAllergicMedication.html")
+    
+@app.route('/patient_results/', methods=["GET", "POST"])
+def patient_results():
+    return render_template("PatientsResults.html")
+    
+@app.route('/nurse_medication/', methods=["GET", "POST"])
+def nurse_medication():
+    return render_template("NursesAdministeredMedication.html")
+    
+@app.route('/interns/', methods=["GET", "POST"])
+def interns():
+    return render_template("InternsTreatedMostPatients.html")
+    
 
+    
+    
+    
 
 ###
 # The functions below should be applicable to all Flask apps.

@@ -1,15 +1,15 @@
-<nav>
+<nav class="navbar navbar-inverse">
       <div >
         <div >
-          <a  href="#">COMP3161</a>
+          <a class="navbar-brand" href="#">COMP3161</a>
         </div>
         <div>
-          <ul>
+          <ul  class="nav navbar-nav">
             <li ><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
           </ul>
 
-          <ul>
+          <ul  class="nav navbar-nav navbar-right">
             {% if not session.logged_in %}
               <li><a href="{{ url_for('login') }}">Login</a></li>
             {% else %}
