@@ -1589,6 +1589,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  
 }
 @media (min-width: 768px) {
   .container {
@@ -4595,6 +4596,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse {
   background-color: #222;
   border-color: #080808;
+  
 }
 .navbar-inverse .navbar-brand {
   color: #9d9d9d;
