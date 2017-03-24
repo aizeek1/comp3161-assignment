@@ -54,6 +54,13 @@ def nurse_medication():
 def interns():
     return render_template("InternsTreatedMostPatients.html")
     
+@app.route('/register/', methods=["GET", "POST"])
+def register():
+    return render_template("register.html")
+    
+@app.route('/medical_info/', methods=["GET", "POST"])
+def medical_info():
+    return render_template("medical_info.html")
     
 
 ###
