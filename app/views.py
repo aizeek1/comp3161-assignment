@@ -7,7 +7,7 @@ This file creates your application.
 
 from app import app
 from flask import render_template, request, redirect, url_for, flash,session
-
+from flask_login import login_user, logout_user, current_user, login_required
 
 
 ###
@@ -15,6 +15,7 @@ from flask import render_template, request, redirect, url_for, flash,session
 ###
 
 @app.route('/home')
+@login_required
 def home():
     """Render website's home page."""
     return render_template('home.html')
