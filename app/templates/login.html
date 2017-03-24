@@ -3,6 +3,10 @@
 {% block main %}
 <div align="center" style="margin:auto">
 <form class="form-login" method="post" >
+    <div class="myimg">
+    <img src ="/static/imgs/banner.jpg"/>
+  </div>
+     <h1 class="page-header">Placid Memorial Hospital</h1><br>
   <h2>Please sign in</h2>
   {% if error %}
     <div class="alert alert-danger">
@@ -17,6 +21,7 @@
     <label for="password" class="sr-only">Password</label>
     <input style="width:400px"  type="password" id="password" name="password" class="form-control" placeholder="Password" required>
   </div>
+
   <button style="width:80px" class="btn btn-default" type="submit">Sign in</button>
 </form>
 </div>
