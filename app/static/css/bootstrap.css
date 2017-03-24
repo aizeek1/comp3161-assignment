@@ -143,6 +143,7 @@ input::-moz-focus-inner {
 }
 input {
   line-height: normal;
+  width:300px;
 }
 input[type="checkbox"],
 input[type="radio"] {
@@ -2549,7 +2550,7 @@ output {
 }
 .form-control {
   display: block;
-  width: 100%;
+  width: 300px;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -3828,7 +3829,7 @@ tbody.collapse.in {
   position: relative;
   z-index: 2;
   float: left;
-  width: 100%;
+  width: 400px;
   margin-bottom: 0;
 }
 .input-group .form-control:focus {
@@ -3971,6 +3972,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-btn:last-child > .btn-group {
   z-index: 2;
   margin-left: -1px;
+  float:left;
 }
 .nav {
   padding-left: 0;
