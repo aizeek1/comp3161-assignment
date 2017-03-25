@@ -1,7 +1,9 @@
 from flask import Flask
 from flask_login import LoginManager
 
+
 app = Flask(__name__)
+
 # SECRET_KEY is needed for session security, the flash() method in this case stores the message in a session
 SECRET_KEY = 'Sup3r$3cretkey'
 
