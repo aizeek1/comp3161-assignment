@@ -62,7 +62,9 @@ def register():
 def medical_info():
     return render_template("medical_info.html")
     
-
+@app.route('/medical_record/', methods=["GET", "POST"])
+def medical_record():
+    return render_template("medical_record_system.html")
 ###
 # The functions below should be applicable to all Flask apps.
 ###

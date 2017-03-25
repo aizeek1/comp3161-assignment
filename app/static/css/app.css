@@ -17,3 +17,21 @@
   border-top: 1px solid #eee;
 width:83%;
 }
+
+nav > ul > li > img {
+  color: black;
+  display: block;
+  line-height: 2em;
+  padding: 0.5em 0.5em;
+  margin-top: 10px;
+  text-decoration: none;
+  max-width:230px;
+  max-height:45px;
+  width: auto;
+  height: auto;
+}
+
+p{
+    text-align: center;
+    font-weight: bold;
+}
