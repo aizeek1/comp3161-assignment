@@ -5,9 +5,13 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-from app import app
+from app import app,db
 from flask import render_template, request, redirect, url_for, flash,session
 from flask_login import login_user, logout_user, current_user, login_required
+
+
+# prepare a cursor object using cursor() method
+cursor = db.cursor()
 
 
 ###
@@ -15,7 +19,6 @@ from flask_login import login_user, logout_user, current_user, login_required
 ###
 
 @app.route('/home')
-
 def home():
     """Render website's home page."""
     return render_template('home.html')
@@ -23,6 +26,17 @@ def home():
     
 @app.route("/", methods=["GET", "POST"])
 def login():
+    if request.method == 'POST':
+        employeeid = request.form['empID']
+        password = request.form['password']
+        if getUserInfo(employeeid,password):
+             session['logged_in'] = True
+             session['empId']= employeeid
+           
+             flash('You are logged in')
+             return redirect(url_for('home'))
+        else:
+            flash('Incorrect password')
     return render_template("login.html")
     
 @app.route('/logout')
@@ -65,6 +79,16 @@ def medical_info():
 @app.route('/medical_record/', methods=["GET", "POST"])
 def medical_record():
     return render_template("medical_record_system.html")
+    
+    
+def getUserInfo(employeeid,password):
+    sql= "select employeeID from employee where employeeID = %s " % "employeeid"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    for row in results:
+            empnum=row[0]
+    if employeeid == str(empnum):
+        return True
 ###
 # The functions below should be applicable to all Flask apps.
 ###

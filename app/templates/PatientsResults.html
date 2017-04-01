@@ -1,13 +1,14 @@
 
 <div style="padding-left:10px">
 <h3> Test Results of Patient </h3>
-
+<form>
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">Patient's Name</span>
-  <input type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" name="patientid" placeholder="Name" aria-describedby="basic-addon1">
   <button style="width:80px" class="btn btn-default" type="submit">Search</button>
 </div>
 
 <div class= 'result'></div>
-
+{{ results}}
+</form>
 </div>

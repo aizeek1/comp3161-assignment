@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block main %}
+
 <div align="center" style="margin:auto">
+    <div class="myimg">
+    <img width="700" height="550" src ="/static/imgs/hos2.jpg"/>
+  </div>
 <form>
     <h1 class="page-header">Placid Memorial Hospital</h1>
   <h2>Register Patient</h2>
@@ -11,12 +15,28 @@
     </div>
   {% endif %}
   <div class="form-group">
-    <label for="username" class="sr-only">Username</label>
-    <input style="width:400px" type="text" id="username" name="username" class="form-control" placeholder="Your username" required >
+    <label  >First Name</label>
+    <input style="width:400px" type="text" id="fname" name="fname" class="form-control" placeholder="first name" required >
   </div>
   <div class="form-group">
-    <label for="password" class="sr-only">Password</label>
-    <input style="width:400px"  type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+    <label >Last Name</label>
+    <input style="width:400px" type="text" id="fname" name="lname" class="form-control" placeholder="last name" required >
+  </div>
+  <div class="form-group">
+    <label  >Date of birth </label>
+    <input style="width:400px"  type="text" id="dob" name="dob" class="form-control" placeholder="DD/MM/YYYY" required>
+  </div>
+  <div class="form-group">
+    <label >Street </label>
+    <input style="width:400px"  type="text" id="street" name="street" class="form-control" placeholder="street" required>
+  </div>
+  <div class="form-group">
+    <label >City </label>
+    <input style="width:400px"  type="text" id="city" name="city" class="form-control" placeholder="city" required>
+  </div>
+  <div class="form-group">
+    <label >Phone number</label>
+    <input style="width:400px"  type="text" id="phone" name="phone" class="form-control" placeholder="Phone number" required>
   </div>
 
   <button style="width:80px" class="btn btn-primary" type="submit">Register</button>
