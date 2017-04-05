@@ -4,7 +4,7 @@ USE HospitalDB;
 
 DROP Table IF EXISTS patients;
 CREATE Table patients(
-patientID       char(50) UNIQUE NOT NULL,
+patientID       char(50) UNIQUE NOT NULL ,
 patient_lname   char(50),
 patient_fname   char(50),
 patient_mname   char(255),

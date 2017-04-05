@@ -14,6 +14,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 cursor = db.cursor()
 
 empnum=''
+patnum=8
 
 ###
 # Routing for your application.
@@ -23,8 +24,10 @@ empnum=''
 
 @app.route("/", methods=["GET", "POST"])
 def login():
+    
     if current_user.is_authenticated:
         return redirect(url_for('home'))
+        
     if request.method == 'POST':
         employeeid = request.form['empID']
         password = request.form['password']
@@ -72,6 +75,7 @@ def allergic_medication():
 @app.route('/patient_results/', methods=["GET", "POST"])
 def patient_results():
     if request.method == 'POST':
+       
         patientid=request.form['patientid']
         results=getPatientResults(patientid)
     return render_template("PatientsResults.html")
@@ -86,7 +90,9 @@ def interns():
     
 @app.route('/register/', methods=["GET", "POST"])
 def register():
+    
     if request.method == 'POST':
+        
         fname=request.form['fname']
         mname=request.form['mname']
         lname=request.form['lname']
@@ -95,14 +101,22 @@ def register():
         street=request.form['street']
         city=request.form['city']
         phone=request.form['phone']
-        pID= 'P-00000006'
-
+        global patnum
+        patnum += 1
+        #patnum= cursor.execute('SELECT MAX(patientID) FROM patients')
+        
+        pID= 'P-0000000' + str(patnum)
+        
         #execute sql commands
         cursor.execute("INSERT INTO patients VALUES ('{}','{}','{}','{}','{}','{}')".format(pID,lname,fname,mname,gender,dob))
+        cursor.execute("INSERT INTO patient_phoneno VALUES ('{}','{}')".format(pID,phone))
+        cursor.execute("INSERT INTO patient_address VALUES ('{}','{}','{}')".format(pID,city,street))
+        
         #commit changes to the database
         db.commit()
+        
         #in case there is any error
-        db.rollback()
+        #db.rollback()
     return render_template("register.html")
     
 @app.route('/medical_info/', methods=["GET", "POST"])
