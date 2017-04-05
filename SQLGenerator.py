@@ -80,6 +80,7 @@ FOREIGN KEY(relativeID) REFERENCES patients(patientID)\n\
 script.write("DROP Table IF EXISTS employee;\n\
 CREATE Table employee(\n\
 employeeID  char(50) UNIQUE NOT NULL,\n\
+password    char(50),\n\
 lname       char(50),\n\
 fname       char(50),\n\
 position    char(25),\n\
@@ -311,6 +312,7 @@ patientIDs = []
 employeeIDs = []
 doctors = []
 nurses = []
+secretaries = []
 
 ## List of diseases
 diagnosi = ['influenza', 'thyroid fever', 'chicken pox', 'measels', 'HIV', 'Hepatitis', 'broken bone', 'bone fracture', 'sprain ligament', 'food poisoning', \
@@ -552,7 +554,7 @@ def generateUsers(amount):
 
 def generateDoctors(amount):
     count = 0
-    dr_sql_template = "INSERT INTO employee VALUES ('{}', '{}', '{}', '{}');"
+    dr_sql_template = "INSERT INTO employee VALUES ('{}', '{}', '{}', '{}', '{}');"
     addr_sql_template = "INSERT INTO employee_address VALUES ('{}', '{}', '{}');"
     phone_sql_template = "INSERT INTO employee_phoneno VALUES ('{}', '{}');"
     addDr_sql_template = "INSERT INTO doctor VALUES ('{}');"
@@ -569,7 +571,8 @@ def generateDoctors(amount):
         fname = fake.first_name()
         lname = fake.last_name()
         position = 'Doctor'
-        sql = dr_sql_template.format(employeeID, fname, lname, position)
+        password = 'doctor{}'.format((count + 1))
+        sql = dr_sql_template.format(employeeID, password, fname, lname, position)
         script.write(sql)
         script.write('\n')
         # Add to Doctor's table
@@ -631,7 +634,7 @@ def pair_Patients_Doctors():
 
 def generateNurses(amount):
     count = 0
-    nurse_sql_template = "INSERT INTO employee VALUES ('{}', '{}', '{}', '{}');"
+    nurse_sql_template = "INSERT INTO employee VALUES ('{}', '{}', '{}', '{}', '{}');"
     addr_sql_template = "INSERT INTO employee_address VALUES ('{}', '{}', '{}');"
     phone_sql_template = "INSERT INTO employee_phoneno VALUES ('{}', '{}');"
     addnurse_sql_template = "INSERT INTO nurse VALUES ('{}', '{}');"
@@ -647,7 +650,8 @@ def generateNurses(amount):
         fname = fake.first_name()
         lname = fake.last_name()
         position = 'Nurse'
-        sql = nurse_sql_template.format(employeeID, fname, lname, position)
+        password = 'nurse{}'.format((count + 1))
+        sql = nurse_sql_template.format(employeeID, password, fname, lname, position)
         script.write(sql)
         script.write('\n')
         # Add to Nurse's table
@@ -689,6 +693,26 @@ def generateNurses(amount):
         
     script.write('\n')
     
+def generateSecretaries(amount):
+    count = 0
+    sec_sql_template = "INSERT INTO employee VALUES ('{}', '{}', '{}', '{}', '{}');"
+    addr_sql_template = "INSERT INTO employee_address VALUES ('{}', '{}', '{}');"
+    phone_sql_template = "INSERT INTO employee_phoneno VALUES ('{}', '{}');"
+    
+    while count < amount:
+        # Secretary Bio
+        employeeID = createID('S-', count +1)
+        employeeIDs.append(employeeID)
+        secretaries.append(employeeID)
+        fname = fake.first_name()
+        lname = fake.last_name()
+        position = 'Secretary'
+        password = 'secretary{}'.format((count + 1))
+        sql = sec_sql_template.format(employeeID, password, fname, lname, position)
+        script.write(sql)
+        script.write('\n')
+        count += 1
+
 def generateMedication():
     count = 0
     med_sql_template = "INSERT INTO medication VALUES ('{}', '{}', {});"
@@ -851,11 +875,13 @@ def generateRecord(amount):
 ###
 #  END of Script
 ###
-amount = 500
+amount = 5
+workers=3
 
 generateUsers(amount)
-generateDoctors(amount)
-generateNurses(amount)
+generateDoctors(workers)
+generateNurses(workers)
+generateSecretaries(workers)
 
 pair_Patients_Doctors()
 generateDiagnosi()

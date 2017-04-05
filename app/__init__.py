@@ -7,8 +7,6 @@ app = Flask(__name__)
 # SECRET_KEY is needed for session security, the flash() method in this case stores the message in a session
 SECRET_KEY = 'Sup3r$3cretkey'
 
-EMPLOYEEID = 'admin'
-PASSWORD = 'password123'
 
 # Flask-Login login manager
 login_manager = LoginManager()

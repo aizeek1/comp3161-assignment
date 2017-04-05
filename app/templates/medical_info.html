@@ -4,4 +4,64 @@
     <div class="myimg" align="center" style="margin:auto">
     <img width="800" height="550" src ="/static/imgs/hos5.jpg"/>
   </div>
+ 
+   <h1 class="page-header">Placid Memorial Hospital</h1>
+   <div style="padding-left:30em">
+  <form method="post" enctype="multipart/form-data">
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Employee ID </span>
+      <input type="text" class="form-control"name="empID" placeholder="D-00000000 / N-00000000" aria-describedby="basic-addon1">
+      </div><br>
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Patient's ID </span>
+      <input type="text" class="form-control"name="patientID" placeholder="P-00000000" aria-describedby="basic-addon1">
+      </div><br>
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Patient's First Name </span>
+      <input type="text" class="form-control"name="fname" placeholder="First Name" aria-describedby="basic-addon1">
+      </div><br>
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Patient's Last Name</span>
+      <input type="text" class="form-control"name="lname" placeholder="Last Name" aria-describedby="basic-addon1">
+      </div><br>
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Patients Vitals </span>
+      <input type="text" class="form-control"name="vitals" placeholder="VIT-00000000" aria-describedby="basic-addon1">
+      </div><br>
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Diagnosis ID </span>
+      <input type="text" class="form-control"name="diagnosis" placeholder="DG-00000000" aria-describedby="basic-addon1">
+      </div><br>
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Disease Code</span>
+      <input type="text" class="form-control"name="dcode" placeholder="VIR-00000000" aria-describedby="basic-addon1">
+      </div><br>
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Date of Record</span>
+      <input type="text" class="form-control"name="dor" placeholder="YYYY-MM-DD" aria-describedby="basic-addon1">
+      </div><br>
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Treatment ID </span>
+      <input type="text" class="form-control"name="treatmentid" placeholder="TRM-00000000" aria-describedby="basic-addon1">
+      </div><br>
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Treatment Type </span>
+      <input type="text" class="form-control"name="treatmenttype" placeholder="" aria-describedby="basic-addon1">
+      </div><br>
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Date Given Treatment </span>
+      <input type="text" class="form-control"name="datoftreatment" placeholder="YYYY-MM-DD" aria-describedby="basic-addon1">
+      </div><br>
+      <div class="input-group">
+       <span class="input-group-addon" id="basic-addon1">Medication Prescribed </span>
+      <input type="text" class="form-control"name="medication" placeholder="MED-00000000" aria-describedby="basic-addon1">
+      </div><br>
+       <div class="input-group">
+        <span for="file" class="input-group-addon" id="basic-addon1">Upload Scans</span>
+        <input type="file" name="file" class="form-control" />
+      </div><br>
+      <button style="width:80px" class="btn btn-primary" align ="middle" type="submit">Submit</button>
+      
+  </form>
+  </div>
 {% endblock %}

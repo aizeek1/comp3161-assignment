@@ -20,10 +20,14 @@
   </head>
   <body>
     <header>
+      {% if session.position == 'Secretary' %}
       <!-- HEADER TO DISPLAY PAGES ASSCESSIBLE TO SECRETARIES-->
         {% include "headerS.html" %}
-        
+      {% else %}
         <!-- HEADER TO DISPLAY PAGES ASSCESSIBLE TO DOCTORS AND NURSES-->
+        {% include "headerDN.html" %}
+      {% endif %}
+      
     </header>
     <main>
         

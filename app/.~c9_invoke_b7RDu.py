@@ -20,20 +20,21 @@ empnum=''
 ###
 
 
-
+@app.route('/home')
+def home():
+    """Render website's home page."""
+    return render_template('home.html')
+    
+    
 @app.route("/", methods=["GET", "POST"])
 def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
     if request.method == 'POST':
         employeeid = request.form['empID']
         password = request.form['password']
-        pos=getPosition(employeeid)
-        session['position']=pos
         if getUserInfo(employeeid,password):
              session['logged_in'] = True
              session['empId']= employeeid
-             
+           
              flash('You are logged in')
              return redirect(url_for('home'))
         else:
@@ -42,23 +43,11 @@ def login():
     
 @app.route('/logout')
 def logout():
-    logout_user()
     flash('You were logged out')
     return redirect(url_for('login'))
     
-@app.route('/home')
-
-def home():
-    """Render website's home page."""
-    return render_template('home.html')
-
 @app.route('/patient_disease/', methods=["GET", "POST"])
 def patient_disease():
-    if request.method == 'POST':
-        diagnosis=request.form['diag']
-        datefr=request.form['datefr']
-        dateto=request.form['dateto']
-        dis=getDiseases(diagnosis,datefr,dateto)
     return render_template("PatientsWithSelectedDisease.html")
     
 @app.route('/patient_allergies/', methods=["GET", "POST"])
@@ -88,67 +77,24 @@ def interns():
 def register():
     if request.method == 'POST':
         fname=request.form['fname']
-        mname=request.form['mname']
         lname=request.form['lname']
-        dob=request.form['dob']
-        gender=request.form['gender']
+        don=request.form['fname']
         street=request.form['street']
         city=request.form['city']
         phone=request.form['phone']
-        pID= 'P-00000006'
-
-        #execute sql commands
-        cursor.execute("INSERT INTO patients VALUES ('{}','{}','{}','{}','{}','{}')".format(pID,lname,fname,mname,gender,dob))
-        #commit changes to the database
-        db.commit()
-        #in case there is any error
-        db.rollback()
+        p = """ INSERT INTO patients (patientID,patient_lname,patient_fname,patient_mname,) VALUES ()"""
+        pa = """ INSERT INTO patient_address (patientID,city,street) VALUES ()"""
+        pp = """ INSERT INTO patient_phoneno (patientID,phone_number) VALUES () """
     return render_template("register.html")
     
 @app.route('/medical_info/', methods=["GET", "POST"])
 def medical_info():
-    if request.method == 'POST':
-        empID=request.form['empID']
-        patientID=request.form['patientID']
-        fname=request.form['fname']
-        lname=request.form['lname']
-        vitals=request.form['vitals']
-        diagnosis=request.form['diagnosis']
-        dcode=request.form['dcode']
-        dor=request.form['dor']
-        treatmentid=request.form['treatmentid']
-        treatmenttype=request.form['treatmenttype']
-        dateoftreatment=request.form['dateoftreatment']
-        medication=request.form['medication']
-        redirect(url_for('home'))
     return render_template("medical_info.html")
-
-@app.route('/results/', methods=["GET", "POST"])
-def results():
-    return render_template("results.html")
     
 @app.route('/medical_record/', methods=["GET", "POST"])
 def medical_record():
     return render_template("medical_record_system.html")
     
-
-def getPosition(employeeid):
-    pos="SELECT position FROM employee WHERE employeeID = '{}'".format(employeeid) 
-    cursor.execute(pos)
-    position=cursor.fetchall()
-    
-    if position == 'Secretary':
-        print position
-        return position
-    elif position == 'Doctor' or position == 'Nurse':
-        print position
-        return position
-        
-def getDiseases(diagnosis,datefr,dateto):
-    sql="SELECT patient_fname,patient_mname,patient_lname from patients WHERE patientID in( SELECT patientID from record WHERE diagnosisID = '{}')".format(diagnosis)
-    cursor.execute(sql)
-    results = cursor.fetchall()
-    return results
     
 def getUserInfo(employeeid,password):
     sql = "SELECT employeeID,password FROM employee WHERE employeeID = '{}'".format(employeeid) 
@@ -171,7 +117,6 @@ def getPatientResults(patientid):
     cursor.execute(sql)
     results = cursor.fetchone()
     return results
-
 ###
 # The functions below should be applicable to all Flask apps.
 ###

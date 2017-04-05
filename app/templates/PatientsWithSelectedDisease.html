@@ -1,16 +1,23 @@
 
 <div style="padding-left:10px" class = 'content' >
 <h3>Patients with Selected Diseases</h3>
+<form method="post">
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">Diagnosis</span>
-  <input type="text" class="form-control" placeholder="Diagnosis" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" name='diag' placeholder="Diagnosis" aria-describedby="basic-addon1">
 </div><br>
 
 <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">YYYY/MM/DD</span>
-  <input type="text" class="form-control" placeholder="Date" aria-describedby="basic-addon1">
+  <span class="input-group-addon" id="basic-addon1">Date From</span>
+  <input type="text" class="form-control" name='datefr' placeholder="YYYY-MM-DD" aria-describedby="basic-addon1">
+</div><br>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Date To</span>
+  <input type="text" class="form-control" name='dateto' placeholder="YYYY-MM-DD" aria-describedby="basic-addon1">
 </div>
 <br><button style="width:80px" class="btn btn-default" type="submit">Search</button>
+</form>
+<div class= 'result'>
 
-<div class= 'result'></div>
+</div>
 </div>
