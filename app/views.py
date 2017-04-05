@@ -25,8 +25,8 @@ patnum=8
 @app.route("/", methods=["GET", "POST"])
 def login():
     
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('home'))
         
     if request.method == 'POST':
         employeeid = request.form['empID']
@@ -134,6 +134,14 @@ def medical_info():
         treatmenttype=request.form['treatmenttype']
         dateoftreatment=request.form['dateoftreatment']
         medication=request.form['medication']
+        
+        cursor.execute("INSERT INTO treatment_given VALUES ('{}','{}','{}','{}')".format(patientID,treatmentid,treatmenttype,dateoftreatment))
+        cursor.execute("INSERT INTO patient_doctor  VALUES ('{}','{}')".format(patientID,empID))
+        cursor.execute("INSERT INTO medication_disease  VALUES ('{}','{}')".format(medication,dcode))
+        cursor.execute("INSERT INTO medication_given VALUES ('{}','{}','{}')".format(patientID,medication,empID))
+        cursor.execute("INSERT INTO record VALUES ('{}','{}','{}','{}','{}','{}')".format(patientID,empID,diagnosis,dcode,vitals,dor))
+        
+        db.commit()
         redirect(url_for('home'))
     return render_template("medical_info.html")
 
@@ -151,12 +159,12 @@ def getPosition(employeeid):
     cursor.execute(pos)
     position=cursor.fetchall()
     
-    if position == 'Secretary':
-        print position
-        return position
-    elif position == 'Doctor' or position == 'Nurse':
-        print position
-        return position
+    # if position == 'Secretary':
+    #     print position
+    #     return position
+    # elif position == 'Doctor' or position == 'Nurse':
+    #     print position
+    return position
         
 def getDiseases(diagnosis,datefr,dateto):
     sql="SELECT patient_fname,patient_mname,patient_lname from patients WHERE patientID in( SELECT patientID from record WHERE diagnosisID = '{}')".format(diagnosis)
